@@ -44,8 +44,42 @@ function phone_screen(){
         let ph_screen = ["url('img/appphone/carousel_01.jpg')","url('img/appphone/carousel_02.jpg')","url('img/appphone/carousel_03.jpg')","url('img/appphone/carousel_04.jpg')"]
         let screen = document.querySelector(".phone-screen");
         let rand = Math.floor(Math.random() * 4);
-        console.log(ph_screen[rand])
         screen.style.backgroundImage = ph_screen[rand];
     },2000)
 }
 phone_screen()
+
+// email valid
+
+let email_valid = () => {
+    let input = document.querySelector(".input");
+    let worring = document.querySelector(".worring");
+
+    input.onblur = () => {
+        if(input.value.includes("@") === false){
+            worring.textContent = "I Forgot The @ Sign (Slap Me To Stop)"
+            worring.classList.add("show")
+            worring.style.color = "#dc3545";
+        }else if (input.value.includes("gmail") === false || input.value.includes("yahoo") === false || input.value.includes("hotmail") === false){
+            worring.textContent = "You must Specify The Type Of Email (Slap Me To Stop)"
+            worring.classList.add("show")
+            worring.style.color = "#dc3545";
+        }else if(input.value.endsWith('.com') === false){
+            worring.textContent = "I Forgot The '.com' In The End (Slap Me To Stop )" 
+            worring.classList.add("show")
+            worring.style.color = "#dc3545";
+        }else{
+            worring.textContent = "Valid Email (Slap Me To Stop)"
+            worring.classList.remove("show")
+            worring.style.color = "#28a745";
+            worring.style.opacity = "1";
+
+        }
+    }
+    worring.onclick = ()=> {
+        worring.textContent = "😭😭😭";
+        worring.classList.remove("show")
+        worring.style.opacity = "1"
+    }
+}
+email_valid()
